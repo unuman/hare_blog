@@ -6,7 +6,7 @@
                 {{ session('notice') }}
             </div>
         @endif
-
+        <x-validation-errors :errors="$errors" />
         <article class="mb-2">
             <h2 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-1 text-3xl md:text-4xl break-words">{{ $post->title }}</h2>
             <h3>{{ $post->user->name }}</h3>
@@ -15,7 +15,7 @@
                 {{ $post->created_at }}
             </p>
             <img src="{{ $post->image_url }}" alt="" class="mb-4">
-            <p class="text-gray-700 text-base">{!! nl2br(e($post->body)) !!}</p>
+            <p class="text-gray-700 text-base break-words">{!! nl2br(e($post->body)) !!}</p>
         </article>
         <div class="flex flex-row text-center my-4">
             @can('update', $post)
